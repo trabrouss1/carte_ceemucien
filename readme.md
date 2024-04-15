@@ -11,6 +11,12 @@ Ceux avec ce que nous savons faire.
 
 ### Commande a execulter
 
+Il faut générer la migration :
+`php bin/console make:migration`
+
+en suite execulter la migration :
+`php bin/console doctrine:migrations:migrate`
+
 installation de tous les dépendances.
 `composer install && composer update`,
 
