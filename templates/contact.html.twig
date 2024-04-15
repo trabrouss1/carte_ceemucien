@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nous contactez{% endblock %}
+
+{% block body %}
+    <div class="breadcrumbs overlay">
+        <div class="container">
+            <div class="bread-inner">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Contact</h2>
+                        <ul class="bread-list">
+                            <li><a href="{{ path('app') }}">Acceuil</a></li>
+                            <li><i class="icofont-simple-right"></i></li>
+                            <li class="active">Nous contacter</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="contact-us section">
+        <div class="container">
+            <div class="inner">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="contact-us-left">
+                            <!--Start Google-map -->
+                            <div id="myMap"></div>
+                            <!--/End Google-map -->
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="contact-us-form">
+                            <h2>En contact avec nous</h2>
+                            <p>Si vous avez des questions, n'hésitez pas à nous contacter</p>
+                            <!-- Form -->
+                            <form class="form" method="POST">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <input type="text" name="nom" placeholder="Nom" ê=>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <input type="email" name="email" placeholder="Email" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <input type="text" name="phone" placeholder="Téléphone" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <input type="text" name="sujet" placeholder="Sujet" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <textarea name="message" placeholder="Votre Message" required></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group login-btn">
+                                            <button class="btn" type="submit">Envoyer</button>
+                                        </div>
+{#                                        <div class="checkbox">#}
+{#                                            <label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox">Do you want to subscribe our Newsletter ?</label>#}
+{#                                        </div>#}
+                                    </div>
+                                </div>
+                            </form>
+                            <!--/ End Form -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-info">
+                <div class="row">
+                    <!-- single-info -->
+                    <div class="col-lg-4 col-12 ">
+                        <div class="single-info">
+                            <i class="icofont icofont-ui-call"></i>
+                            <div class="content">
+                                <h3>+(225) 07 59 637 013</h3>
+                                <p>benceemuci@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/End single-info -->
+                    <!-- single-info -->
+                    <div class="col-lg-4 col-12 ">
+                        <div class="single-info">
+                            <i class="icofont-google-map"></i>
+                            <div class="content">
+                                <h3>Abidjan Côte d'Ivoire</h3>
+                                <p>Cocody, Rivera palmeraie</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/End single-info -->
+                    <!-- single-info -->
+                    <div class="col-lg-4 col-12 ">
+                        <div class="single-info">
+                            <i class="icofont icofont-wall-clock"></i>
+                            <div class="content">
+                                <h3>24/24</h3>
+                                <p>Ouvert tous les jours</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/End single-info -->
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
