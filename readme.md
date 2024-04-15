@@ -20,5 +20,6 @@ Ajouter options: ['expose' => true] à la définition de la route dans le contro
 
 ### Technologie utilisée
 Bundle : vich/uploader, gedmo, knp_paginator, jsRouting
+<<<<<<< HEAD
 
 PHP : `>=8.2`
