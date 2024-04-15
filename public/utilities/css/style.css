@@ -1,0 +1,4 @@
+.required-hlper:after {
+    content:" *";
+    color: red;
+}
