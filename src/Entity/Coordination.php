@@ -3,13 +3,16 @@
 namespace App\Entity;
 
 use App\Repository\CoordinationRepository;
+use App\Trait\addFilesCDUTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CoordinationRepository::class)]
+#[Gedmo\SoftDeleteable(fieldName: 'deletedAt', timeAware: false, hardDelete: true)]
 class Coordination
 {
+    use addFilesCDUTrait;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

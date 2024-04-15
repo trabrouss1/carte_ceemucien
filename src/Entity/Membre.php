@@ -3,15 +3,18 @@
 namespace App\Entity;
 
 use App\Repository\MembreRepository;
+use App\Trait\addFilesCDUTrait;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: MembreRepository::class)]
+#[Gedmo\SoftDeleteable(fieldName: 'deletedAt', timeAware: false, hardDelete: true)]
 #[Vich\Uploadable]
 class Membre
 {
+    use addFilesCDUTrait;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -57,7 +60,7 @@ class Membre
     private ?string $photo = null;
 
     #[Vich\UploadableField(mapping: 'photos', fileNameProperty: 'photo')]
-    #[Assert\Image(mimeTypes: ['image/png', 'image/jpeg'])]
+//    #[Assert\Image(mimeTypes: ['image/png', 'image/jpeg'])]
     private ?File $photoFile = null;
 
     public function getId(): ?int
