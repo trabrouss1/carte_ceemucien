@@ -5,8 +5,11 @@ namespace App\Entity;
 use App\Repository\MembreRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: MembreRepository::class)]
+#[Vich\Uploadable]
 class Membre
 {
     #[ORM\Id]
@@ -52,6 +55,10 @@ class Membre
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $photo = null;
+
+    #[Vich\UploadableField(mapping: 'photos', fileNameProperty: 'photo')]
+    #[Assert\Image(mimeTypes: ['image/png', 'image/jpeg'])]
+    private ?File $photoFile = null;
 
     public function getId(): ?int
     {
@@ -210,6 +217,18 @@ class Membre
     public function setPhoto(?string $photo): static
     {
         $this->photo = $photo;
+
+        return $this;
+    }
+
+    public function getPhotoFile(): ?string
+    {
+        return $this->photoFile;
+    }
+
+    public function setPhotoFile(?string $photoFile): static
+    {
+        $this->photoFile = $photoFile;
 
         return $this;
     }
