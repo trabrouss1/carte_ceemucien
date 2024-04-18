@@ -34,6 +34,9 @@ class Coordination
     #[ORM\OneToMany(targetEntity: Membre::class, mappedBy: 'coordination')]
     private Collection $membres;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $nombreMembre = null;
+
     public function __construct()
     {
         $this->membres = new ArrayCollection();
@@ -106,6 +109,18 @@ class Coordination
                 $membre->setCoordination(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNombreMembre(): ?string
+    {
+        return $this->nombreMembre;
+    }
+
+    public function setNombreMembre(?string $nombreMembre): static
+    {
+        $this->nombreMembre = $nombreMembre;
 
         return $this;
     }
