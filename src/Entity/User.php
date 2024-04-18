@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -36,6 +37,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column]
     private ?bool $isRoot = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $lastConnection = null;
 
     public function __construct()
     {
@@ -137,6 +141,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setRoot(bool $isRoot): static
     {
         $this->isRoot = $isRoot;
+
+        return $this;
+    }
+
+    public function getLastConnection(): ?\DateTimeInterface
+    {
+        return $this->lastConnection;
+    }
+
+    public function setLastConnection(\DateTimeInterface $lastConnection): static
+    {
+        $this->lastConnection = $lastConnection;
 
         return $this;
     }

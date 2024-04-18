@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Site;
 
 use App\Entity\Contact;
 use Doctrine\ORM\EntityManagerInterface;
@@ -60,6 +60,6 @@ class ContactController extends AbstractController
             }
             $this->redirectToRoute($request->attributes->get('_route'));
         }
-        return $this->render('contact.html.twig');
+        return $this->render('site/contact.html.twig');
     }
 }
