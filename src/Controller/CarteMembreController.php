@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\carteMembre;
+use App\Entity\CarteMembre;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
