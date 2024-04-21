@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\CarteMembre;
+use App\Entity\Membre;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,9 +18,16 @@ class CarteMembreController extends AbstractController
             $data = $request->request->all();
             $nom = $data["nom"];
             $prenom = $data["prenom"];
-            $phone = $data["phone"];
+            $contact = $data["contact"];
+            $contactCasUrgent = $data["contactCasUrgent"];
+            $dateNaissance = $data["dateNaissance"];
             $lieuNaissance = $data["lieuNaissance"];
-            $niveauEtude = $data["niveauEtude"];
+            $niveau = $data["niveau"];
+            $matricule = $data["matricule"];
+            $qualite = $data["qualite"];
+            $villeActuelle = $data["villeActuelle"];
+            $coordination = $data["coordination"];
+            $photo = $data["photo"];
             $genre = $data["genre"];
 
             $errors = null;
@@ -34,14 +41,20 @@ class CarteMembreController extends AbstractController
             }
 
 
-            $contact = new CarteMembre();
-            $contact->setNom($nom);
-            $contact->setPrenom($prenom);
-            $contact->setGenre($genre);
-            $contact->setNiveauEtude($niveauEtude);
-            $contact->setLieuNaissance($lieuNaissance);
-            $contact->setPhone($phone);
-            $manager->persist($contact);
+            $carteMembre = new Membre();
+            $carteMembre->setNom($nom);
+            $carteMembre->setPrenom($prenom);
+            $carteMembre->setGenre($genre);
+            $carteMembre->setVilleActuelle($villeActuelle);
+            $carteMembre->setPhoto($photo);
+            $carteMembre->setCoordination($coordination);
+            $carteMembre->setQualite($qualite);
+            $carteMembre->setMatricule($matricule);
+            $carteMembre->setLieuNaissance($lieuNaissance);
+            $carteMembre->setDateNaissance($dateNaissance);
+            $carteMembre->setContact($contact);
+            $carteMembre->setContactCasUrgent($contactCasUrgent);
+            $manager->persist($carteMembre);
 
             try {
                 $manager->flush();
