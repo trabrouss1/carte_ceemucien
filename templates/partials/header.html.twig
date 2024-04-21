@@ -33,7 +33,7 @@
                     <div class="col-lg-3 col-md-3 col-12">
                         <!-- Start Logo -->
                         <div class="logo">
-                            <a href="index.html"><img src="{{ asset('img/logo.png') }}" alt="#"></a>
+                            <a href="index.html"><img src="{{ asset('img/logo.png') }}" alt="#" width="100"></a>
                         </div>
                         <!-- End Logo -->
                         <!-- Mobile Nav -->
@@ -66,7 +66,7 @@
                                     <li><a href="#">Activités <i class="icofont-rounded-down"></i></a>
                                         <ul class="dropdown">
                                             <li><a href="#">Récensement</a></li>
-                                            <li><a href="#">Carte de membre</a></li>
+                                            <li><a href="{{ path('carte-membre') }}">Carte de membre</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="{{ path('contact') }}">Contacter</a></li>
