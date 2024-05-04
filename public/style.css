@@ -113,7 +113,7 @@ body{
 	line-height: 45px;
 	font-size: 14px;
 	border-radius: 5px 0 0 5px;
-	background: #1A76D1;
+	background: #1ad16c;
 	text-align: center;
 	color: #fff;
 	top: 0;
@@ -127,7 +127,7 @@ body{
 	bottom: 15px;
 	right: 15px;
 	padding: 10px 20px;
-	background: #1a76d1;
+	background: #2a6d0f;
 	color: #fff;
 	font-size: 25px;
 	width: 45px;
@@ -293,7 +293,7 @@ body{
 	color:#1A76D1;
 }
 .header .top-contact li i{
-	color:#1A76D1;
+	color:#247d08;
 	margin-right:8px;
 }
 .header .header-inner {
@@ -344,7 +344,7 @@ body{
 	bottom: 0;
 	height: 3px;
 	width:0%;
-	background: #1A76D1;
+	background: #247d08;
 	border-radius: 5px 5px 0 0;
 	opacity:0;
 	visibility:hidden;
@@ -358,7 +358,7 @@ body{
 	width: 100%;
 }
 .header .nav li.active a{
-	color:#1A76D1;
+	color:#247d08;
 }
 .header .nav li:hover a:before{
 	opacity:1;
@@ -366,7 +366,7 @@ body{
 	visibility:visible;
 }
 .header .nav li:hover a{
-	color:#1a76d1;
+	color:#247d08;
 }
 .header .nav li a i {
 	display: inline-block;
@@ -447,7 +447,7 @@ body{
 	opacity: 0;
 	visibility: hidden;
 	top: 74px;
-	border-left:3px solid #2889e4;
+	border-left:3px solid #247d08;
 }
 .header .nav li:hover .dropdown{
 	opacity:1;
@@ -480,7 +480,7 @@ body{
 	border-bottom:0px;
 }
 .header .nav li .dropdown li:hover a{
-	color:#1A76D1;
+	color:#247d08;
 }
 .header .nav li .dropdown li a:hover{
 	border-color:transparent;
@@ -610,7 +610,7 @@ body{
 	line-height: 42px;
 }
 .slider .single-slider h1 span{
-	color:#1a76d1;
+	color: #245d24;
 }
 .slider .single-slider p {
 	color: #2C2D3F;
@@ -622,7 +622,7 @@ body{
 }
 .slider .single-slider .btn{
 	color:#fff;
-	background:#1a76d1;
+	background:#2a6d0f;
 	font-weight:500;
 	display:inline-block;
 	margin:0;
@@ -636,7 +636,7 @@ body{
 	color:#fff;
 }
 .slider .single-slider .btn.primary:before{
-	background:#1A76D1;
+	background:#2a6d0f;
 }
 .slider .owl-carousel .owl-nav {
 	margin: 0;
@@ -650,7 +650,7 @@ body{
 	width: 50px;
 	line-height: 50px;
 	text-align: center;
-	background: #1A76D1;
+	background: #2a6d0f;
 	color: #fff;
 	font-size: 26px;
 	position: absolute;
@@ -705,7 +705,7 @@ body{
 	text-align: left;
 	z-index:3;
 	border-radius:5px;
-	background:#1A76D1;
+	background:#2a6d0f;
 	 -webkit-transition: all .3s ease-out 0s;
     -moz-transition: all .3s ease-out 0s;
     -ms-transition: all .3s ease-out 0s;
@@ -728,7 +728,7 @@ body{
     margin: 0 auto;
     width: 80%;
     height: 90%;
-    background:#1A76D1;
+    background:#318011;
     opacity: 0;
     filter: blur(10px);
     -webkit-transition: all .3s ease-out 0s;
@@ -851,7 +851,7 @@ body{
 	right: -72px;
 	top: 60px;
 	width: 118px;
-	border-bottom: 3px dotted #1a76d1;
+	border-bottom: 3px dotted #1f5d07;
 }
 .Feautes .single-features.last::before{
 	display:none;
@@ -861,7 +861,7 @@ body{
 }
 .Feautes .single-features .signle-icon i{
 	font-size:50px;
-	color:#1a76d1;
+	color:#2a6d0f;
 	position:absolute;
 	left:50%;
 	margin-left:-50px;
@@ -877,7 +877,7 @@ body{
 	transition:all 0.4s ease;
 }
 .Feautes .single-features:hover .signle-icon i{
-	background:#1A76D1;
+	background:#2a6d0f;
 	color:#fff;
 	border-color:transparent;
 }
@@ -933,7 +933,7 @@ body{
 	border-radius: 50%;
 }
 .fun-facts .single-fun:hover i{
-	color:#1A76D1;
+	color:#2a6d0f;
 	background:#fff;
 	border-color:transparent;
 }
@@ -978,7 +978,7 @@ body{
 	bottom:0;
 	height:2px;
 	width:50px;
-	background:#1a76d1;
+	background:#2a6d0f;
 }
 .why-choose .choose-left p{
 	margin-bottom:35px;
@@ -996,7 +996,7 @@ body{
 	width:15px;
 	line-height:15px;
 	text-align:center;
-	background:#1a76d1;
+	background:#2a6d0f;
 	color:#fff;
 	font-size:14px;
 	border-radius:100%;
@@ -1029,7 +1029,7 @@ body{
 	margin-left: -35px;
 	margin-top: -35px;
 	font-size: 21px;
-	background: #1a76d1;
+	background: #2a6d0f;
 	padding-left: 4px;
 }
 .why-choose .choose-right .video:hover{
@@ -1039,7 +1039,7 @@ body{
 	position: absolute;
 	width: 200px;
 	height: 200px;
-	background: #fff;
+	background: #d3ffac;
 	opacity: 0;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 	border-radius: 100%;
@@ -1096,13 +1096,13 @@ body{
 	margin-right:20px;
 	font-weight:500;
 	border:1px solid #fff;
-	color:#1a76d1;
+	color:#2a6d0f;
 }
 .call-action .content .btn:before{
-	background:#1A76D1;
+	background: transparent;
 }
 .call-action .content .btn:hover{
-	background:#1A76D1;
+	background: transparent;
 	color:#fff;
 }
 .call-action .content .btn:last-child{
@@ -1118,7 +1118,6 @@ body{
 	background:#fff;
 }
 .call-action .content .second:hover{
-	color:#1A76D1;
 	border-color:transparent;
 	background:#fff;
 }
@@ -1149,7 +1148,7 @@ body{
 	top:0;
 	height:100%;
 	width:100%;
-	background:#1a76d1;
+	background:#2a6d0f;
 	opacity:0;
 	visibility:hidden;
 	-webkit-transition:all 0.4s ease;
@@ -1162,7 +1161,7 @@ body{
 	visibility:visible;
 }
 .portfolio .single-pf .btn {
-	color: #1a76d1;
+	color: #2a6d0f;
 	z-index: 3;
 	background: #fff;
 	position: absolute;
@@ -1318,7 +1317,7 @@ body{
 }
 .services .single-service i{
 	font-size:45px;
-	color:#1a76d1;
+	color:#2a6d0f;
 	position:absolute;
 	left:0;
 	-webkit-transition:all 0.4s ease;
@@ -1336,7 +1335,7 @@ body{
 	font-weight:600;
 }
 .services .single-service h4 a:hover{
-	color:#1A76D1;
+	color:#2a6d0f;
 }
 .services .single-service p{
 	color:#868686;
@@ -1633,7 +1632,7 @@ body{
 }
 .pricing-table .single-table .icon i{
 	font-size:65px;
-	color:#1a76d1;
+	color:#2a6d0f;
 }
 .pricing-table .single-table .title {
 	font-size: 21px;
@@ -1644,7 +1643,7 @@ body{
 .pricing-table .single-table .amount {
 	font-size:36px;
 	font-weight:600;
-	color:#1a76d1;
+	color:#2a6d0f;
 }
 .pricing-table .single-table .amount span{
 	display:inline-block;
@@ -1683,7 +1682,7 @@ body{
 	line-height: 16px;
 	text-align: center;
 	color: #fff;
-	background: #1a76d1;
+	background: #2a6d0f;
 	border-radius: 100%;
 	padding-left: 1px;
 }
@@ -2035,7 +2034,7 @@ body{
 	bottom:0;
 	height:2px;
 	width:0%;
-	background:#1A76D1;
+	background:#2a6d0f;
 	opacity:0;
 	visibility:hidden;
 	-webkit-transition:all 0.4s ease;
@@ -2058,7 +2057,7 @@ body{
 	font-weight: 500;
 }
 .blog .single-news .news-body h2 a:hover{
-	color:#1A76D1;
+	color:#2a6d0f;
 }
 .blog .single-news .news-content p {
 	font-weight: 400;
@@ -2071,7 +2070,7 @@ body{
 	display: inline-block;
 	font-size: 14px;
 	margin-bottom: 5px;
-	background: #1A76D1;
+	background: #2a6d0f;
 	color: #fff;
 	padding: 4px 15px;
 	border-radius: 3px;
@@ -2754,6 +2753,7 @@ body{
 	font-weight:400;
 	border-radius:0;
 	border-radius: 4px;
+	outline-color: #2a6d0f;
 }
 .appointment .form textarea{
 	width: 100%;
@@ -2763,6 +2763,7 @@ body{
 	text-transform:capitalize;
 	resize:none;
 	border-radius: 4px;
+	outline-color: #2a6d0f;
 }
 .appointment .form-group .nice-select{
 	width: 100%;
@@ -2777,6 +2778,7 @@ body{
 	border-radius: 4px;
 	font-weight:400;
 }
+
 .appointment .form-group .nice-select::after {
 	right: 20px;
 	color: #757575;
@@ -2794,7 +2796,7 @@ body{
 }
 .appointment .form-group .list li:hover {
 	color:#fff;
-	background: #1A76D1;
+	background: #2a6d0f;
 }
 .appointment .appointment-image{}
 .appointment.single-page .button .btn{
@@ -3568,6 +3570,8 @@ body{
 	font-size: 14px;
 	background: #fff;
 	font-weight:400;
+	margin-bottom: 30px;
+	outline-color: #2a6d0f;
 }
 .newsletter .btn {
 	-webkit-transition: all 0.4s ease;
@@ -3581,16 +3585,17 @@ body{
 	position: relative;
 	top: -2px;
 	border-radius: 5px;
-	margin-left: 10px;
+	margin-left: 2px;
 	font-size: 13px;
 	font-weight: 500;
 	box-shadow: 0px 5px 15px rgba(188, 199, 255, 0.75);
 }
 .newsletter .btn:before{
-	border-radius: 5px;
+	border-radius: 5px;	
 }
 .newsletter .button:hover{
 	box-shadow:none;
+	border-color: #2a6d0f;
 }
 /*=========================
 	End Newsletter CSS
@@ -3969,7 +3974,7 @@ body{
 .footer .footer-top{
 	padding:100px 0px;
 	position:relative;
-	background:#1A76D1;
+	background:#2a6d0f;
 }
 .footer .footer-top:before{
 	position:absolute;
@@ -4008,7 +4013,7 @@ body{
 	font-size: 16px;
 }
 .footer .single-footer .social li a:hover{
-	color:#1A76D1;
+	color:#2a6d0f;
 	background:#fff;
 	border-color:transparent;
 }
@@ -4101,6 +4106,7 @@ body{
 	transition: all 0.4s ease;
 	font-weight: 400;
 	border-radius: 5px;
+	outline: none;
 }
 .footer .single-footer .newsletter-inner input:hover{
 	padding-left: 22px;
@@ -4141,7 +4147,7 @@ body{
 	-moz-transition: all 0.4s ease;
 	transition: all 0.4s ease;
 	border-radius: 0 5px 5px 0;
-	color: #1A76D1;
+	color: #2a6d0f;
 	font-size: 25px;
 }
 .footer .single-footer .newsletter-inner .button i{
@@ -4153,7 +4159,7 @@ body{
 	color:#2C2D3F;
 }
 .footer .copyright{
-	background:#1A76D1;
+	background:#2a6d0f;
 	padding:25px 0px 25px 0px;
 	text-align:center;
 }
