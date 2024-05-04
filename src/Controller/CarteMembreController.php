@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Coordination;
 use App\Entity\Membre;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,12 +12,12 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class CarteMembreController extends AbstractController
 {
-    #[Route('/carte-membre', name: 'carte-membre', methods: ['GET', 'POST'])]
+    #[Route('/carte-membre', name: 'carte_membre', methods: ['GET', 'POST'])]
     public function carteMembre(Request $request, EntityManagerInterface $manager): Response
     {
         if ($request->isMethod('POST')) {
             $data = $request->request->all();
-            $nom = $data["nom"];
+            $nom  = $data["nom"];
             $prenom = $data["prenom"];
             $contact = $data["contact"];
             $contactCasUrgent = $data["contactCasUrgent"];
@@ -64,6 +65,8 @@ class CarteMembreController extends AbstractController
             }
             $this->redirectToRoute($request->attributes->get('_route'));
         }
-        return $this->render('carte-membre.html.twig');
+
+        $coordinations = $manager->getRepository(Coordination::class)->findAll();
+        return $this->render('carte-membre.html.twig', compact('coordinations'));
     }
 }

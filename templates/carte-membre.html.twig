@@ -3,8 +3,6 @@
 {% block title %}Inscription carte de membre CEEMUCI{% endblock %}
 
 {% block body %}
-  
-
     <section class="contact-us section breadcrumbs overlay">
         <div class="container">
             <div class="inner">
@@ -56,9 +54,11 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <select name="coordination" required>
-                                                <option>UFHB</option>
-                                                <option>LOH</option>
+                                            <select name="coordination" id="coordination">
+                                                <option value="Selectionnez votre coordination"></option>
+                                                {% for coordination in coordinations %}
+                                                    <option value="{{ coordination.id }}">{{ coordination.nom }}</option>
+                                                {% endfor %}
                                             </select>
                                         </div>
                                     </div>
