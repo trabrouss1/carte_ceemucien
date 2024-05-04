@@ -117,14 +117,14 @@ class Membre
         return $this;
     }
 
-    public function getSexe(): ?string
+    public function getGenre(): ?string
     {
-        return $this->sexe;
+        return $this->genre;
     }
 
-    public function setSexe(string $sexe): static
+    public function setGenre(string $genre): static
     {
-        $this->sexe = $sexe;
+        $this->genre = $genre;
 
         return $this;
     }
@@ -225,15 +225,15 @@ class Membre
         return $this;
     }
 
-    public function getPhotoFile(): ?string
-    {
-        return $this->photoFile;
-    }
+    // public function getPhotoFile(): ?string
+    // {
+    //     return $this->photoFile;
+    // }
 
-    public function setPhotoFile(?string $photoFile): static
-    {
-        $this->photoFile = $photoFile;
+    // public function setPhotoFile(?string $photoFile): static
+    // {
+    //     $this->photoFile = $photoFile;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 }
