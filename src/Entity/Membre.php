@@ -49,9 +49,6 @@ class Membre
     private ?string $qualite = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $niveau = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
     private ?string $villeActuelle = null;
 
     #[ORM\ManyToOne(inversedBy: 'membres')]
@@ -60,9 +57,11 @@ class Membre
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $photo = null;
 
-    #[Vich\UploadableField(mapping: 'photos', fileNameProperty: 'photo')]
-//    #[Assert\Image(mimeTypes: ['image/png', 'image/jpeg'])]
+    #[Vich\UploadableField(mapping: 'carte_membre', fileNameProperty: 'photo')]
     private ?File $photoFile = null;
+
+    #[ORM\ManyToOne(inversedBy: 'membres')]
+    private ?Niveau $niveau = null;
 
     public function getId(): ?int
     {
@@ -177,18 +176,6 @@ class Membre
         return $this;
     }
 
-    public function getNiveau(): ?string
-    {
-        return $this->niveau;
-    }
-
-    public function setNiveau(?string $niveau): static
-    {
-        $this->niveau = $niveau;
-
-        return $this;
-    }
-
     public function getVilleActuelle(): ?string
     {
         return $this->villeActuelle;
@@ -225,15 +212,27 @@ class Membre
         return $this;
     }
 
-    // public function getPhotoFile(): ?string
-    // {
-    //     return $this->photoFile;
-    // }
+     public function getPhotoFile(): ?string
+     {
+         return $this->photoFile;
+     }
 
-    // public function setPhotoFile(?string $photoFile): static
-    // {
-    //     $this->photoFile = $photoFile;
+     public function setPhotoFile(?string $photoFile): static
+     {
+         $this->photoFile = $photoFile;
 
-    //     return $this;
-    // }
+         return $this;
+     }
+
+    public function getNiveau(): ?Niveau
+    {
+        return $this->niveau;
+    }
+
+    public function setNiveau(?Niveau $niveau): static
+    {
+        $this->niveau = $niveau;
+
+        return $this;
+    }
 }

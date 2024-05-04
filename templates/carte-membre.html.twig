@@ -15,38 +15,40 @@
                     <div class="col-lg-8">
                         <div class="contact-us-form">
                             <h2>Votre carte de membre CEEMUCI ici!!!</h2>
-                            <p>Si vous avez des questions, n'hésitez pas à nous contacter</p>
+                            <p>Si vous avez des questions, n'hésitez pas à nous contacter <a href="{{ path('contact') }}">Ici</a> </p>
                             <!-- Form -->
+                            
                             <form class="form" method="POST" enctype="multipart/form-data">
                                 <div class="row">
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-6">
                                         <div class="form-group">
-                                            <input type="file" accept="image/*" name="photo" placeholder="Photo" required>
+                                            <input type="text" name="nom" placeholder="Nom" >
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <input type="text" name="nom" placeholder="Nom" required>
+                                            <input type="text" name="prenom" placeholder="Prénom" >
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <input type="text" name="contact" placeholder="Téléphone" >
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <input type="text" name="prenom" placeholder="Prénom" required>
+                                            <input type="text" name="contactCasUrgent" placeholder="Téléphone cas urgent" >
                                         </div>
                                     </div>
+                                </div>
+
+                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <input type="text" name="contact" placeholder="Téléphone" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <input type="text" name="contactCasUrgent" placeholder="Téléphone cas urgent" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <select name="genre" required>
+                                            <select name="genre" class="form-control" >
                                                 <option>M</option>
                                                 <option>F</option>
                                             </select>
@@ -54,7 +56,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <select name="coordination" id="coordination">
+                                            <select name="coordination" class="form-control" id="coordination">
                                                 <option value="Selectionnez votre coordination"></option>
                                                 {% for coordination in coordinations %}
                                                     <option value="{{ coordination.id }}">{{ coordination.nom }}</option>
@@ -62,43 +64,71 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
                                         <div class="form-group">
-                                            <input type="text" name="qualite" placeholder="Qualité" required>
+                                            <select name="fonction" id="fonction">
+                                                <option value="IMAM">IMAM</option>
+                                                <option value="CSC">CSC</option>
+                                                <option value="CC">CC</option>
+                                                <option value="RECTORAT">RECTORAT</option>
+                                                <option value="BEN">BEN</option>
+                                                <option value="MEMBRE">MEMBRE</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-6">
                                         <div class="form-group">
-                                            <input type="text" name="niveau" placeholder="Niveau d'étude ou votre profession" required>
+                                            <input type="text" name="qualite" placeholder="Qualité" >
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
-                                            <input type="text" name="matricule" placeholder="Matricule" required>
+                                            <div class="form-group">
+                                                <select name="niveau" id="niveau">
+                                                    <option value="niveau">Votre niveau</option>
+                                                    {% for niveau in niveaux %}
+                                                        <option value="{{ niveau.id }}">{{ niveau.libelle }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
-                                            <input type="date" name="dateNaissance" placeholder="Lieu de naissance" required>
+                                            <input type="date" name="dateNaissance" placeholder="Date de naissance" >
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
-                                            <input type="text" name="lieuNaissance" placeholder="Lieu de naissance" required>
+                                            <input type="text" name="lieuNaissance" placeholder="Lieu de naissance" >
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
                                         <div class="form-group">
-                                            <input type="text" name="villeActuelle" placeholder="Ville de residence" required>
+                                            <input type="text" name="villeActuelle" placeholder="Ville de residence" >
                                         </div>
                                     </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <input type="file" accept="image/*" name="photo" placeholder="Photo" >
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
                                     <div class="col-12">
                                         <div class="form-group login-btn">
                                             <button class="btn" type="submit">Envoyer</button>
                                         </div>
-{#                                        <div class="checkbox">#}
-{#                                            <label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox">Do you want to subscribe our Newsletter ?</label>#}
-{#                                        </div>#}
                                     </div>
                                 </div>
                             </form>
