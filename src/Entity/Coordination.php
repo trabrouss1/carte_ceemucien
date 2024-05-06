@@ -37,9 +37,16 @@ class Coordination
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $nombreMembre = null;
 
+    /**
+     * @var Collection<int, Seminariste>
+     */
+    #[ORM\OneToMany(targetEntity: Seminariste::class, mappedBy: 'coordination')]
+    private Collection $seminaristes;
+
     public function __construct()
     {
         $this->membres = new ArrayCollection();
+        $this->seminaristes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -121,6 +128,36 @@ class Coordination
     public function setNombreMembre(?string $nombreMembre): static
     {
         $this->nombreMembre = $nombreMembre;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Seminariste>
+     */
+    public function getSeminaristes(): Collection
+    {
+        return $this->seminaristes;
+    }
+
+    public function addSeminariste(Seminariste $seminariste): static
+    {
+        if (!$this->seminaristes->contains($seminariste)) {
+            $this->seminaristes->add($seminariste);
+            $seminariste->setCoordination($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSeminariste(Seminariste $seminariste): static
+    {
+        if ($this->seminaristes->removeElement($seminariste)) {
+            // set the owning side to null (unless already changed)
+            if ($seminariste->getCoordination() === $this) {
+                $seminariste->setCoordination(null);
+            }
+        }
 
         return $this;
     }

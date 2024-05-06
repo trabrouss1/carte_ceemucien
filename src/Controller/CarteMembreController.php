@@ -69,7 +69,6 @@ class CarteMembreController extends AbstractController
 
             try {
                 $manager->flush();
-                dd("ici");
                 $this->addFlash("success", "Vos informations ont bien été pris en compte. Votre carte sera disponible dans les jours avenir.");
             } catch(\Exception $e) {
                 $this->addFlash('danger', $e->getMessage());

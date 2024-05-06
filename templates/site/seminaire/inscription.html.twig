@@ -1,0 +1,244 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription au seminaire national 2024{% endblock %}
+
+{% block body %}
+    <div class="breadcrumbs overlay">
+        <div class="container">
+            <div class="bread-inner">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Inscription pour le seminaire</h2>
+                        <p class="text-white">
+                            Sabiboul Ilm (Le chemin de la science) est le Séminaire National de Formation Islamique a lieu durant les vacances.
+                            Il a pour but de former nos freres, soeurs et sympathisants sur le volet Islamique.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="contact-us section">
+        <div class="container">
+            <form class="form" method="POST" action="{{ path('seminaire_national') }}">
+                <div class="row">
+                    <h3>La Participation au seminaire <span class="text-success">Sabiloul Ilm</span> 2024 est de : <span class="text-danger">7.0000 F CFA</span></h3>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+{#                            <label>Séminaire <span class="text-danger">*</span></label>#}
+                            <select name="typeSeminaire" class="form-control" required=>
+                                {% for seminaire in seminaires %}
+                                    <option value="{{ seminaire.id }}">{{ seminaire.libelle  }} - {{ seminaire.annee }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="nom">Nom<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="nom" placeholder="TRAORE" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="pnom">Prénom(s)<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="pnom" placeholder="Soualio"required >
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="dateNaissance">Date de naissance<span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" name="dateNaissance" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="lieuNaissance">Lieu de naissance<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="lieuNaissance" placeholder="Logouale" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="contact">Contact</label>
+                            <input type="number" class="form-control" name="contact" placeholder="0779256345" required>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+{#                            <label for="genre">Selectionnez le genre</label>#}
+                            <select name="genre" class="form-control" id="genre" required>
+                                <option value="">Selectionnez votre genre</option>
+                                <option value="M">Masculin</option>
+                                <option value="F">Feminin</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+{#                            <label for="niveauEtude">Niveau d'étude</label>#}
+                            <select name="niveauEtude" id="niveauEtude" class="form-control" required>
+                                <option value="">Selectionnez votre niveau</option>
+                                <option value="PRIMAIRE">PRIMAIRE</option>
+                                <option value="SECONDAIRE">SECONDAIRE</option>
+                                <option value="UNIVERSITAIRE">UNIVERSITAIRE</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <select name="coordination" id="coordination" class="form-control">
+                                <option value="">Selectionnez votre coordination</option>
+                                {% for coordination in coordinations %}
+                                    <option value="{{ coordination.id }}">{{ coordination.nom }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="section">Section</label>
+                            <input type="text" class="form-control" name="section" placeholder="Ex-flash">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="section">tion</label>
+                            <input type="text" class="form-control" name="section" placeholder="Ex-flash">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="section">tion</label>
+                            <input type="text" class="form-control" name="section" placeholder="Ex-flash">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label>Djinn<span class="text-danger">*</span></label>
+                            <div class="radio" id="djinn" style="margin-left: 10px;">
+                                <label class="radio-inline">
+                                    <input type="radio" name="djinn" data-toggle="radio" value="1">Oui
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="djinn" data-toggle="radio" value="0" checked="">Non
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label>Ulcère<span class="text-danger">*</span></label>
+                            <div class="radio" id="ulcere" style="margin-left: 10px;">
+                                <label class="radio-inline">
+                                    <input type="radio" name="ulcere" data-toggle="radio" value="1">Oui
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="ulcere" data-toggle="radio" value="0" checked="">Non
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label>Tuberculose<span class="text-danger">*</span></label>
+                            <div class="radio" id="tuberculose" style="margin-left: 10px;">
+                                <label class="radio-inline">
+                                    <input type="radio" name="tuberculose" data-toggle="radio" value="1">Oui
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="tuberculose" data-toggle="radio" value="0" checked="">Non
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label>Asthme<span class="text-danger">*</span></label>
+                            <div class="radio" id="asthme" style="margin-left: 10px;">
+                                <label class="radio-inline">
+                                    <input type="radio" name="asthme" data-toggle="radio" value="1">Oui
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="asthme" data-toggle="radio" value="0" checked="">Non
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label>Grossesse<span class="text-danger">*</span></label>
+                            <div class="radio" id="grossesse" style="margin-left: 10px;">
+                                <label class="radio-inline">
+                                    <input type="radio" name="grossesse" data-toggle="radio" value="1">Oui
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="grossesse" data-toggle="radio" value="0" checked="">Non
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label>Diabète<span class="text-danger">*</span></label>
+                            <div class="radio" id="diabete" style="margin-left: 10px;">
+                                <label class="radio-inline">
+                                    <input type="radio" name="diabete" data-toggle="radio" value="1">Oui
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="diabete" data-toggle="radio" value="0" checked="">Non
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="autreMaladie">Précision de maladie</label>
+                            <input type="text" name="autreMaladie" class="form-control" id="autreMaladie" placeholder="Précisez si vous avez une autre maladie">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="remedeMaladie">Quelle est le nom du remède</label>
+                            <input type="text" name="remedeMaladie" class="form-control" id="remedeMaladie" placeholder="Nom du remède de votre maladie">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <label for="nomParent">Nom & Prénom du parent<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="nomParent" placeholder="COULIBALY Malik" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="contactParent">Contact parent<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="contactParent" placeholder="0098653234" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-2 text-center">
+                    <button type="submit" class="btn">Envoyer</button>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}
