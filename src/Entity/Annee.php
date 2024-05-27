@@ -27,9 +27,9 @@ class Annee
     private ?bool $achevee = null;
 
     /**
-     * @var Collection<int, Batiement>
+     * @var Collection<int, Batiment>
      */
-    #[ORM\OneToMany(targetEntity: Batiement::class, mappedBy: 'annee')]
+    #[ORM\OneToMany(targetEntity: Batiment::class, mappedBy: 'annee')]
     private Collection $batiements;
 
     public function __construct()
@@ -67,14 +67,14 @@ class Annee
     }
 
     /**
-     * @return Collection<int, Batiement>
+     * @return Collection<int, Batiment>
      */
     public function getBatiements(): Collection
     {
         return $this->batiements;
     }
 
-    public function addBatiement(Batiement $batiement): static
+    public function addBatiement(Batiment $batiement): static
     {
         if (!$this->batiements->contains($batiement)) {
             $this->batiements->add($batiement);
@@ -84,7 +84,7 @@ class Annee
         return $this;
     }
 
-    public function removeBatiement(Batiement $batiement): static
+    public function removeBatiement(Batiment $batiement): static
     {
         if ($this->batiements->removeElement($batiement)) {
             // set the owning side to null (unless already changed)

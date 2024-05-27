@@ -2,14 +2,19 @@
 
 namespace App\Entity;
 
-use App\Repository\BatiementRepository;
+use App\Repository\BatimentRepository;
+use App\Trait\addFilesCDUTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
-#[ORM\Entity(repositoryClass: BatiementRepository::class)]
-class Batiement
+#[Gedmo\SoftDeleteable(fieldName: 'deletedAt', timeAware: false, hardDelete: true)]
+#[ORM\Entity(repositoryClass: BatimentRepository::class)]
+class Batiment
 {
+    use addFilesCDUTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

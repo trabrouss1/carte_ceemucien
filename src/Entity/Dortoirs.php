@@ -3,11 +3,17 @@
 namespace App\Entity;
 
 use App\Repository\DortoirsRepository;
+use App\Trait\addFilesCDUTrait;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
+
+#[Gedmo\SoftDeleteable(fieldName: 'deletedAt', timeAware: false, hardDelete: true)]
 #[ORM\Entity(repositoryClass: DortoirsRepository::class)]
 class Dortoirs
 {
+    use addFilesCDUTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -20,7 +26,7 @@ class Dortoirs
     private ?string $genre = null;
 
     #[ORM\ManyToOne(inversedBy: 'dortoirs')]
-    private ?Batiement $batiment = null;
+    private ?Batiment $batiment = null;
 
     #[ORM\Column]
     private ?float $placeDisponible = null;
@@ -57,12 +63,12 @@ class Dortoirs
         return $this;
     }
 
-    public function getBatiment(): ?Batiement
+    public function getBatiment(): ?Batiment
     {
         return $this->batiment;
     }
 
-    public function setBatiment(?Batiement $batiment): static
+    public function setBatiment(?Batiment $batiment): static
     {
         $this->batiment = $batiment;
 
