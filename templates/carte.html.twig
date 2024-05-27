@@ -1,0 +1,176 @@
+{% set schemeAndHttpHost = schemeAndHttpHost is not defined ? app.request.schemeAndHttpHost : schemeAndHttpHost %}
+<div class="page">
+{#    <div class="arriere-plan" style="text-align: right; vertical-align: middle; margin: 5px;">#}
+{#        <br><img src="{{ schemeAndHttpHost ~ asset(infoEcole.corporation.logo is not null ? 'uploads/logo_ecole/' ~ infoEcole.corporation.logo : '') }}" width="30%" height="auto">#}
+{#    </div>#}
+    {#      <div class="main" {% if loop.index != 1 %}style="margin-top: 5px;"{% endif %}>#}
+    <div class="main">
+        <table width="100%" align="center" style="border: 0px solid black;">
+            <tr>
+                <td width="47%">
+                    <div style="text-align: center">
+                        <p class="rci" style="margin: -5px;">REPUBLIQUE DE CÔTE D'IVOIRE</p>
+                        <p style="margin: -5px; font-size: 0.7em">Union - Discipline - Travail</p>
+                        <p style="margin: -5px; font-size: 0.7em">Ministère de l'Education Nationale</p>
+                    </div>
+                </td>
+                <td width="5%">
+                    <img src="{{ schemeAndHttpHost ~ asset('images/cote-d-ivoire.png') }}" width="190%" height="auto" />
+                </td>
+                <td width="47%">
+                    <div style="text-align: center">
+                        <p style="margin: -5px; font-size: 1.5em">Carte scolaire</p>
+                        <p style="margin: -5px; font-size: 0.8em">{{ infoEcole.nom is not null ? infoEcole.nom : "Nom école" }}</p>
+                    </div>
+                    <div style="font-weight: bold; text-align: center; font-family: majalla; font-size: 1em; line-height: 15px">
+                        <span style="">{{ infoEcole.corporation.slogan is not null ? infoEcole.corporation.slogan : "Slogan école" }}</span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div style="font-weight: bold; text-align: center; font-family: majalla; color: red; font-size: 1.3em; line-height: 12px">
+            <span style="">{{ eleve.matricule }}</span>
+        </div>
+        <div style="margin: 0px;">
+            <table width="100%" class="info">
+                <tbody>
+                <tr>
+                    <td rowspan="6" width="25%" style="text-align: center">
+                        <img width="auto" height="100px" src="{{ schemeAndHttpHost ~ asset(eleve.imageUrl is not null ? eleve.imageUrl : 'images/eleve.jpeg') }}" alt="">
+                        <p style="margin: 0px; font-size: 0.6em; background: {{ mainColor }}; text-align: center; padding: 1px; color: white;">
+                            {{ inscription.classeFr is not null ? inscription.classeFr.classeLabel : null }}
+                        </p>
+                    </td>
+                    <td width="25%"><span style="font-weight: bold">Prénom & Nom</span></td>
+                    <td><span style="">: {{ eleve.nomComplet }}</span></td>
+                </tr>
+                <tr>
+                    <td><span style="font-weight: bold">Date naissance</span></td>
+                    <td><span style="">: {{ eleve.dateNaissance|date('d/m/Y') }}</span></td>
+                </tr>
+                <tr>
+                    <td><span style="font-weight: bold">Lieu naissance</span></td>
+                    <td><span style="">: {{ eleve.lieuNaissance }}</span></td>
+                </tr>
+                <tr>
+                    <td><span style="font-weight: bold">Sexe</span></td>
+                    <td><span style="">: {{ eleve.sexe == "M" ? 'Masculin' : 'Féminin' }}</span></td>
+                </tr>
+                <tr>
+                    <td><span style="font-weight: bold">Statut</span></td>
+                    <td><span style="">: {{ eleve.status }}</span></td>
+                </tr>
+                <tr>
+                    <td><span style="font-weight: bold">En cas d'urgence</span></td>
+                    <td><span style="">: {{ eleve.contactPere }}</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <table width="100%" style="margin: 0px; line-height: 9px;">
+            <tr>
+                <td style="align: left; width: 25%">
+                    {#              <img src="{{ schemeAndHttpHost ~ asset(infoEcole.imageUrl is not null ? infoEcole.imageUrl : '' ) }}" width="75%" height="auto">#}
+                </td>
+                <td style="align: left; width: 25%">
+                    <img src={{"https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=" ~ eleve.matricule ~ "|" ~ eleve.nom|replace({' ': '-'}) ~ "-" ~ eleve.prenom|replace({' ': '-'}) ~ "|" ~ (inscription.classeFr ? inscription.classeFr.classeLabel : null)|replace({' ': ''}) ~ "|" ~ libelleAnnee ~ "&choe=UTF-8"}} alt="" width="35px">
+                </td>
+                <td style="align: right; width: 50%; text-align: right; font-size: 1em; font-style: italic; font-family: majalla">
+                    <span>Année scolaire : </span><span style="font-weight: bold">{{ libelleAnnee }}</span>&nbsp;&nbsp;<br><br>
+                    <span style="color: red">Date d'expiration : </span><span style="font-weight: bold; color: red;">{{ libelleAnnee }}</span>&nbsp;&nbsp;
+                </td>
+            </tr>
+        </table>
+        {# <div class="footer">
+          <span style="line-height: 5px">{{ infoEcole.nomDirecteur }} >=< isimarkaz@gmail.com <=> www.drdiallo.net <=> RSA N°798/MEMIS/DGAT/DAG/SDVA</span>
+        </div> #}
+    </div>
+</div>
+{% if regimeId in [1, 3] %}
+    <div class="page">
+        <div class="arriere-plan" style="text-align: left; vertical-align: middle;">
+            <br><img src="{{ schemeAndHttpHost ~ asset(infoEcole.corporation.logo is not null ? 'uploads/logo_ecole/' ~ infoEcole.corporation.logo : '') }}" width="30%" height="auto">
+        </div>
+        <div class="main" dir="rtl" style="">
+            <table width="100%" align="center" style="border: 0px solid black;">
+                <tr>
+                    <td width="47%">
+                        <div style="text-align: center">
+                            <p class="rci" style="margin: -5px;">جمهورية ساحل العاج</p>
+                            <p style="margin: -5px; font-size: 0.7em">اتحاد - نظام - عمل</p>
+                            <p style="margin: -5px; font-size: 0.7em">وزارة التعليم الوطني</p>
+                        </div>
+                    </td>
+                    <td width="5%">
+                        <img src="{{ schemeAndHttpHost ~ asset('images/cote-d-ivoire.png') }}" width="190%" height="auto">
+                    </td>
+                    <td width="47%">
+                        <div style="text-align: center">
+                            <p style="margin: -5px; font-size: 1.5em">بطاقة طالب</p>
+                            <p style="margin: -5px; font-size: 0.8em">{{ infoEcole.nomAr is not null ? infoEcole.nomAr : "" }}</p>
+                        </div>
+                        <div style="font-weight: bold; text-align: center; font-family: majalla; font-size: 1em; line-height: 15px">
+                            <span style="">{{ infoEcole.corporation.sloganAr is not null ? infoEcole.corporation.sloganAr : "" }}</span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div style="font-weight: bold; text-align: center; font-family: majalla; color: red; font-size: 1.3em; line-height: 15px">
+                <span style="">{{ eleve.matricule }}</span>
+            </div>
+            <div style="margin: 0px;">
+                <table width="100%" class="info">
+                    <tbody>
+                    <tr>
+                        <td rowspan="6" width="25%" style="text-align: center">
+                            <img width="auto" height="100px" src="{{ schemeAndHttpHost ~ asset(eleve.imageUrl is not null ? eleve.imageUrl : 'images/eleve.jpeg') }}" alt="">
+                            <p style="margin: 0px; font-size: 0.6em; background: {{ mainColor }}; text-align: center; padding: 1px; color: white;">
+                                {{ inscription.classeAr is not null ? inscription.classeAr.classeLabel : null }}
+                            </p>
+                        </td>
+                        <td width="25%"><span style="font-weight: bold">الاسم واللقب</span></td>
+                        <td><span style="">: {{ eleve.prenomArabe ~ ' ' ~ eleve.nomArabe }}</span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-weight: bold">تاريخ الميلاد</span></td>
+                        <td><span style="dir: ltr">: {{ eleve.arabic_w2e(eleve.dateNaissance|date('d/m/Y')) }}</span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-weight: bold">مكان الميلاد</span></td>
+                        <td><span style="">: {{ eleve.lieuNaissanceArabe }}</span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-weight: bold">الجنس</span></td>
+                        <td><span style="">: {{ eleve.sexe == 'M' ? 'ذكر' : 'أنثى' }}</span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-weight: bold">الوضع</span></td>
+                        <td><span style="">: {{ eleve.status == 'Affecté(e)' ? 'متأثر' : 'غير متأثر' }}</span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-weight: bold">جوال الولي</span></td>
+                        <td><span style="">: {{ eleve.arabic_w2e(eleve.contactPere) }}</span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <table width="100%" style="margin: 0px; line-height: 9px;">
+                <tr>
+                    <td style="align: right; width: 25%">
+                        {#              <img src="{{ schemeAndHttpHost ~ asset(infoEcole.imageUrl is not null ? infoEcole.imageUrl : '' ) }}" width="75%" height="auto">#}
+                    </td>
+                    <td style="align: right; width: 25%">
+                        <img src={{"https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=" ~ eleve.matricule ~ "|" ~ eleve.nom|replace({' ': '-'}) ~ "-" ~ eleve.prenom|replace({' ': '-'}) ~ "|" ~ (inscription.classeAr ? inscription.classeAr.classeLabel : null)|replace({' ': ''}) ~ "|" ~ libelleAnnee ~ "&choe=UTF-8"}} alt="" width="35px">
+                    </td>
+                    <td style="align: left; width: 50%; text-align: left; font-size: 1em; font-style: italic; font-family: majalla;">
+                        <span>السنة الدراسية : </span><span style="font-weight: bold">{{  eleve.arabic_w2e(libelleAnnee) }}</span>&nbsp;&nbsp;<br><br>
+                        <span style="color: red">تاريخ الانتهاء : </span><span style="font-weight: bold; color: red;">{{  eleve.arabic_w2e(libelleAnnee) }}</span>&nbsp;&nbsp;
+                    </td>
+                </tr>
+            </table>
+            {# <div class="footer">
+          <span style="line-height: 5px" dir="ltr">{{ annexe.directeur.contact }} >=< isimarkaz@gmail.com <=> www.drdiallo.net <=> RSA N°798/MEMIS/DGAT/DAG/SDVA</span>
+        </div> #}
+        </div>
+    </div>
+{% endif %}

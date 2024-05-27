@@ -42,7 +42,7 @@ security:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/home, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/app, roles: IS_AUTHENTICATED_FULLY }
+#        - { path: ^/app, roles: IS_AUTHENTICATED_FULLY } # A gerer
 
 
 when@test:

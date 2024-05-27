@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% set mainColor = '#057eaf' %}
+<html>
+{#    <head>#}
+{#        <style>#}
+{#            @font-face{#}
+{#              font-family: "majalla";#}
+{#              src: url("{{app.request.schemeAndHttpHost ~ asset('fonts/majalla.ttf')}}")#}
+{#            }#}
+
+{#            @page{margin: 0.05in}#}
+
+{#            body{#}
+{#              font-family: majalla;#}
+{#            }#}
+{#            #}
+{#            .arriere-plan{#}
+{#              opacity: 0.2;#}
+{#              position: absolute;#}
+{#              z-index: -2;#}
+{#            }#}
+
+{#            .page{#}
+{#              page-break-after: always;#}
+{#              height: 204px;#}
+{#            }#}
+
+{#            .main{#}
+{#              position: relative;#}
+{#              z-index: 3;#}
+{#              display: inline-block;#}
+{#            }#}
+
+{#            .rci{#}
+{#              font-size: .8em;#}
+{#            }#}
+
+{#            .info{#}
+{#              font-family: majalla;#}
+{#              font-size: 1.2em;#}
+{#              line-height: 13px;#}
+{#            }#}
+
+{#            .footer {#}
+{#              left: 0;#}
+{#              bottom: 0;#}
+{#              width: 100%;#}
+{#              height: 5%;#}
+{#              font-size: .7em;#}
+{#              background-color: {{ mainColor }};#}
+{#              color: white;#}
+{#              margin: auto;#}
+{#              text-align: center;#}
+{#            }#}
+{#            #}
+{#            .footer p {#}
+{#              line-height: 3px;#}
+{#            }#}
+{#        </style>#}
+{#        <meta charset="UTF-8">#}
+{#        <title>Carte scolaire de {{ inscription.eleve.nomComplet }}</title>#}
+{#    </head>#}
+    <body>
+        {{ include("carte.html.twig", {membre: membre}) }}
+    </body>
+</html>
