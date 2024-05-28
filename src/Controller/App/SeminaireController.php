@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Site;
+namespace App\Controller\App;
 
 use App\Entity\Coordination;
 use App\Entity\Seminaire;
@@ -11,14 +11,20 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+#[Route("/app")]
 class SeminaireController extends AbstractController
 {
     public function __construct(
         private EntityManagerInterface $manager,
-        private RequestStack $requestStack
+        private RequestStack $requestStack,
+        public ?int $currentAnneeId = null,
     )
     {
+        $this->currentAnneeId = $requestStack->getSession()->get('currentAnnee')['anneeId'];
+        $this->currentLibelleAnnee = $requestStack->getSession()->get('currentAnnee')['libelleAnnee'];
     }
+
+//ROLE_INSCRIPTION_SEMINARISTE
     #[Route('/seminaire-national', name: 'seminaire_national')]
     public function seminaire_national(): Response
     {
@@ -47,7 +53,7 @@ class SeminaireController extends AbstractController
             $nomParent = $data['nomParent'];
             $contactParent = $data['contactParent'];
 
-            $errors = null;
+            $errors = "";
             if ($nom == "" || $nom == null) {
                 $errors .= '<li>le nom doit être renseigné</li>';
             }
@@ -84,14 +90,18 @@ class SeminaireController extends AbstractController
             if ($contactParent == "" || $contactParent == null) {
                 $errors .= '<li>le contact du parent doit être renseigné</li>';
             }
-            if ($errors != null) {
+            if ($errors != "") {
                 $this->addFlash('danger', 'Impossible de continuer car les erreurs suivantes sont survenues: ' . $errors);
                 return $this->redirectToRoute($request->attributes->get('_route'));
             }
 
+            $matricule = "sbIlm".substr($this->currentLibelleAnnee , 2, 3) . "" . rand(1458485, 9999999);
+
             $seminariste = new Seminariste();
             $seminariste->setNom($nom)
                         ->setPnom($pnom)
+                        ->setMatricule($matricule)
+                        ->setSexe($genre)
                         ->setContact($contact)
                         ->setCoordination($coordination)
                         ->setNiveau($niveauEtude)
@@ -108,20 +118,20 @@ class SeminaireController extends AbstractController
                         ->setAutreMalidie($autreMaladie)
                         ->setRemedeAutreMalidie($remedeMaladie)
                         ->setNomPrenomParent($nomParent)
-                        ->setContact($contactParent)
+                        ->setContactParent($contactParent)
                         ->setCreatedBy($this->getUser());
             $this->manager->persist($seminariste);
 
 
             try {
-                $manager->flush();
+                $this->manager->flush();
                 $this->addFlash("success", "Booooooooonnnnnnn");
             } catch(\Exception $e) {
                 $this->addFlash('danger', $e->getMessage());
             }
         }
         $coordinations = $this->manager->getRepository(Coordination::class)->findAll();
-        $seminaires = $this->manager->getRepository(Seminaire::class)->findBy(['active' => true]);
+        $seminaires = $this->manager->getRepository(Seminaire::class)->findByActive(true);
         return $this->render('site/seminaire/inscription.html.twig', compact('coordinations','seminaires'));
     }
 

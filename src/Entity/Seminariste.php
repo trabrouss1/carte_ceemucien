@@ -80,6 +80,9 @@ class Seminariste
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $remedeAutreMalidie = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $matricule = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -321,6 +324,18 @@ class Seminariste
     public function setRemedeAutreMalidie(?string $remedeAutreMalidie): static
     {
         $this->remedeAutreMalidie = $remedeAutreMalidie;
+
+        return $this;
+    }
+
+    public function getMatricule(): ?string
+    {
+        return $this->matricule;
+    }
+
+    public function setMatricule(string $matricule): static
+    {
+        $this->matricule = $matricule;
 
         return $this;
     }

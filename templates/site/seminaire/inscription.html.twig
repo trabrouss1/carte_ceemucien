@@ -75,7 +75,7 @@
                         <div class="form-group">
 {#                            <label for="genre">Selectionnez le genre</label>#}
                             <select name="genre" class="form-control" id="genre" required>
-                                <option value="">Selectionnez votre genre</option>
+                                <option value="">Selectionnez le genre</option>
                                 <option value="M">Masculin</option>
                                 <option value="F">Feminin</option>
                             </select>
@@ -85,7 +85,7 @@
                         <div class="form-group">
 {#                            <label for="niveauEtude">Niveau d'étude</label>#}
                             <select name="niveauEtude" id="niveauEtude" class="form-control" required>
-                                <option value="">Selectionnez votre niveau</option>
+                                <option value="">Selectionnez le niveau</option>
                                 <option value="PRIMAIRE">PRIMAIRE</option>
                                 <option value="SECONDAIRE">SECONDAIRE</option>
                                 <option value="UNIVERSITAIRE">UNIVERSITAIRE</option>
@@ -95,7 +95,7 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <select name="coordination" id="coordination" class="form-control">
-                                <option value="">Selectionnez votre coordination</option>
+                                <option value="">Selectionnez la coordination</option>
                                 {% for coordination in coordinations %}
                                     <option value="{{ coordination.id }}">{{ coordination.nom }}</option>
                                 {% endfor %}

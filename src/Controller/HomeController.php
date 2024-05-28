@@ -20,6 +20,11 @@ class HomeController extends AbstractController
     #[Route('/home', name: 'app_home')]
     public function homeAfterConnection(): Response
     {
+        if ($this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('admin_index');
+        } elseif ($this->isGranted('ROLE_INSCRIPTION_SEMINARISTE')) {
+            return $this->redirectToRoute('seminaire_national');
+        }
         return $this->render('home.html.twig');
     }
 }
