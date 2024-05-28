@@ -54,6 +54,9 @@ class Seminaire
     #[ORM\Column]
     private ?bool $active = null;
 
+    #[ORM\Column]
+    private ?float $montant = null;
+
     public function __construct()
     {
         $this->seminaristes = new ArrayCollection();
@@ -198,6 +201,18 @@ class Seminaire
     public function setActive(bool $active): static
     {
         $this->active = $active;
+
+        return $this;
+    }
+
+    public function getMontant(): ?float
+    {
+        return $this->montant;
+    }
+
+    public function setMontant(float $montant): static
+    {
+        $this->montant = $montant;
 
         return $this;
     }

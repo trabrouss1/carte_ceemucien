@@ -52,6 +52,9 @@ class SeminaireController extends AbstractController
             $remedeMaladie = $data['remedeMaladie'];
             $nomParent = $data['nomParent'];
             $contactParent = $data['contactParent'];
+            $pernConfiance = $data['pernConfiance'];
+            $contactPernConfiance = $data['contactPernConfiance'];
+            $montantPayer = $data['montantPayer'];
 
             $errors = "";
             if ($nom == "" || $nom == null) {
@@ -96,11 +99,15 @@ class SeminaireController extends AbstractController
             }
 
             $matricule = "sbIlm".substr($this->currentLibelleAnnee , 2, 3) . "" . rand(1458485, 9999999);
+            $montant = $montantPayer != null ? $montantPayer : $typeSeminaire->getMontant();
 
             $seminariste = new Seminariste();
             $seminariste->setNom($nom)
                         ->setPnom($pnom)
                         ->setMatricule($matricule)
+                        ->setPernConfiance($pernConfiance)
+                        ->setMontant()
+                        ->setContactPernConfiance($contactPernConfiance)
                         ->setSexe($genre)
                         ->setContact($contact)
                         ->setCoordination($coordination)
@@ -122,7 +129,6 @@ class SeminaireController extends AbstractController
                         ->setCreatedBy($this->getUser());
             $this->manager->persist($seminariste);
 
-
             try {
                 $this->manager->flush();
                 $this->addFlash("success", "Booooooooonnnnnnn");
@@ -132,11 +138,19 @@ class SeminaireController extends AbstractController
         }
         $coordinations = $this->manager->getRepository(Coordination::class)->findAll();
         $seminaires = $this->manager->getRepository(Seminaire::class)->findByActive(true);
-        return $this->render('site/seminaire/inscription.html.twig', compact('coordinations','seminaires'));
+        return $this->render('app/seminaire/inscription.html.twig', compact('coordinations','seminaires'));
     }
 
     public function isTrue(bool $bool)
     {
         return $bool == 1 ? true : false;
+    }
+
+
+    #[Route('/liste-seminariste', name: 'liste_seminariste')]
+    public function liste_seminariste()
+    {
+        $seminaristes = $this->manager->getRepository(Seminariste::class)->findAll();
+        return $this->render('app/seminaire/liste_seminariste.html.twig', compact('seminaristes'));
     }
 }

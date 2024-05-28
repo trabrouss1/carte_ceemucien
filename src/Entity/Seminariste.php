@@ -83,6 +83,15 @@ class Seminariste
     #[ORM\Column(length: 255)]
     private ?string $matricule = null;
 
+    #[ORM\Column]
+    private ?float $montant = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $personneConfiance = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $contactPersonneConfiance = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -336,6 +345,42 @@ class Seminariste
     public function setMatricule(string $matricule): static
     {
         $this->matricule = $matricule;
+
+        return $this;
+    }
+
+    public function getMontant(): ?float
+    {
+        return $this->montant;
+    }
+
+    public function setMontant(float $montant): static
+    {
+        $this->montant = $montant;
+
+        return $this;
+    }
+
+    public function getPersonneConfiance(): ?string
+    {
+        return $this->personneConfiance;
+    }
+
+    public function setPersonneConfiance(?string $personneConfiance): static
+    {
+        $this->personneConfiance = $personneConfiance;
+
+        return $this;
+    }
+
+    public function getContactPersonneConfiance(): ?string
+    {
+        return $this->contactPersonneConfiance;
+    }
+
+    public function setContactPersonneConfiance(?string $contactPersonneConfiance): static
+    {
+        $this->contactPersonneConfiance = $contactPersonneConfiance;
 
         return $this;
     }
