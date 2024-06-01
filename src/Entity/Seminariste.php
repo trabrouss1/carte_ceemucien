@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\SeminaristeRepository;
 use App\Trait\addFilesCDUTrait;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -91,6 +93,22 @@ class Seminariste
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $contactPersonneConfiance = null;
+
+    /**
+     * @var Collection<int, Entree>
+     */
+    #[ORM\OneToMany(targetEntity: Entree::class, mappedBy: 'seminariste')]
+    private Collection $entrees;
+
+    public function __construct()
+    {
+        $this->entrees = new ArrayCollection();
+    }
+
+    public function nomComplte()
+    {
+        return $this->pnom . ' ' . $this->nom;
+    }
 
     public function getId(): ?int
     {
@@ -381,6 +399,36 @@ class Seminariste
     public function setContactPersonneConfiance(?string $contactPersonneConfiance): static
     {
         $this->contactPersonneConfiance = $contactPersonneConfiance;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Entree>
+     */
+    public function getEntrees(): Collection
+    {
+        return $this->entrees;
+    }
+
+    public function addEntree(Entree $entree): static
+    {
+        if (!$this->entrees->contains($entree)) {
+            $this->entrees->add($entree);
+            $entree->setSeminariste($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEntree(Entree $entree): static
+    {
+        if ($this->entrees->removeElement($entree)) {
+            // set the owning side to null (unless already changed)
+            if ($entree->getSeminariste() === $this) {
+                $entree->setSeminariste(null);
+            }
+        }
 
         return $this;
     }

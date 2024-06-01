@@ -31,7 +31,7 @@
 {#                            <label>Séminaire <span class="text-danger">*</span></label>#}
                             <select name="typeSeminaire" class="form-control" required=>
                                 {% for seminaire in seminaires %}
-                                    <option value="{{ seminaire.id }}">{{ seminaire.libelle  }} - {{ seminaire.annee }}</option>
+                                    <option value="{{ seminaire.id }}">{{ seminaire.libelle  }} - {{ seminaire.annee.libelle }}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -111,12 +111,12 @@
                             <input type="text" class="form-control" name="section" placeholder="Ex-flash">
                         </div>
                     </div>
-{#                    <div class="col-sm-4">#}
-{#                        <div class="form-group">#}
-{#                            <label for="section">Nom & prenom personne de confiance</label>#}
-{#                            <input type="text" class="form-control" name="pernConfiance" placeholder="KONE Zakari">#}
-{#                        </div>#}
-{#                    </div>#}
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="section">Date d'inscription</label>
+                            <input type="datetime-local" class="form-control" name="dateIncription" required>
+                        </div>
+                    </div>
 {#                    <div class="col-sm-4">#}
 {#                        <div class="form-group">#}
 {#                            <label for="section">Contact de cette personne</label>#}

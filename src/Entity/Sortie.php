@@ -35,6 +35,9 @@ class Sortie
     #[ORM\Column]
     private ?float $montant = null;
 
+    #[ORM\ManyToOne(inversedBy: 'sorties')]
+    private ?Seminaire $seminaire = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -96,6 +99,18 @@ class Sortie
     public function setMontant(float $montant): static
     {
         $this->montant = $montant;
+
+        return $this;
+    }
+
+    public function getSeminaire(): ?Seminaire
+    {
+        return $this->seminaire;
+    }
+
+    public function setSeminaire(?Seminaire $seminaire): static
+    {
+        $this->seminaire = $seminaire;
 
         return $this;
     }

@@ -21,6 +21,17 @@ class CaisseRepository extends ServiceEntityRepository
         parent::__construct($registry, Caisse::class);
     }
 
+    public function montantCaisse(int $anneeId)
+    {
+        $qb = $this->createQueryBuilder('c')
+                    ->select('SUM(c.montant)')
+                    ->join('c.seminaire', 'cs')
+                    ->join('cs.annee', 'ca')
+                    ->andWhere('ca.id = :anneeId')
+                    ->setParameter('anneeId', $anneeId);
+        return $qb->getQuery()->getSingleScalarResult();
+    }
+
     //    /**
     //     * @return Caisse[] Returns an array of Caisse objects
     //     */

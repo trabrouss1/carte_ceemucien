@@ -33,22 +33,22 @@ class Annee
     private Collection $batiements;
 
     /**
-     * @var Collection<int, Entree>
+     * @var Collection<int, Seminariste>
      */
-    #[ORM\OneToMany(targetEntity: Entree::class, mappedBy: 'annee')]
-    private Collection $entrees;
+    #[ORM\OneToMany(targetEntity: Seminariste::class, mappedBy: 'annee')]
+    private Collection $seminaristes;
 
     /**
-     * @var Collection<int, Sortie>
+     * @var Collection<int, Seminaire>
      */
-    #[ORM\OneToMany(targetEntity: Sortie::class, mappedBy: 'annee')]
-    private Collection $sorties;
+    #[ORM\OneToMany(targetEntity: Seminaire::class, mappedBy: 'annee')]
+    private Collection $seminaires;
 
     public function __construct()
     {
         $this->batiements = new ArrayCollection();
-        $this->entrees = new ArrayCollection();
-        $this->sorties = new ArrayCollection();
+        $this->seminaristes = new ArrayCollection();
+        $this->seminaires = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -111,29 +111,29 @@ class Annee
     }
 
     /**
-     * @return Collection<int, Entree>
+     * @return Collection<int, Seminariste>
      */
-    public function getEntrees(): Collection
+    public function getSeminaristes(): Collection
     {
-        return $this->entrees;
+        return $this->seminaristes;
     }
 
-    public function addEntree(Entree $entree): static
+    public function addSeminariste(Seminariste $seminariste): static
     {
-        if (!$this->entrees->contains($entree)) {
-            $this->entrees->add($entree);
-            $entree->setAnnee($this);
+        if (!$this->seminaristes->contains($seminariste)) {
+            $this->seminaristes->add($seminariste);
+            $seminariste->setAnnee($this);
         }
 
         return $this;
     }
 
-    public function removeEntree(Entree $entree): static
+    public function removeSeminariste(Seminariste $seminariste): static
     {
-        if ($this->entrees->removeElement($entree)) {
+        if ($this->seminaristes->removeElement($seminariste)) {
             // set the owning side to null (unless already changed)
-            if ($entree->getAnnee() === $this) {
-                $entree->setAnnee(null);
+            if ($seminariste->getAnnee() === $this) {
+                $seminariste->setAnnee(null);
             }
         }
 
@@ -141,29 +141,29 @@ class Annee
     }
 
     /**
-     * @return Collection<int, Sortie>
+     * @return Collection<int, Seminaire>
      */
-    public function getSorties(): Collection
+    public function getSeminaires(): Collection
     {
-        return $this->sorties;
+        return $this->seminaires;
     }
 
-    public function addSorty(Sortie $sorty): static
+    public function addSeminaire(Seminaire $seminaire): static
     {
-        if (!$this->sorties->contains($sorty)) {
-            $this->sorties->add($sorty);
-            $sorty->setAnnee($this);
+        if (!$this->seminaires->contains($seminaire)) {
+            $this->seminaires->add($seminaire);
+            $seminaire->setAnnee($this);
         }
 
         return $this;
     }
 
-    public function removeSorty(Sortie $sorty): static
+    public function removeSeminaire(Seminaire $seminaire): static
     {
-        if ($this->sorties->removeElement($sorty)) {
+        if ($this->seminaires->removeElement($seminaire)) {
             // set the owning side to null (unless already changed)
-            if ($sorty->getAnnee() === $this) {
-                $sorty->setAnnee(null);
+            if ($seminaire->getAnnee() === $this) {
+                $seminaire->setAnnee(null);
             }
         }
 

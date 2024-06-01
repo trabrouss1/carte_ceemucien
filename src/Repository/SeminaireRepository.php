@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Seminaire;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @extends ServiceEntityRepository<Seminaire>
@@ -20,6 +21,7 @@ class SeminaireRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Seminaire::class);
     }
+
 
     //    /**
     //     * @return Seminaire[] Returns an array of Seminaire objects

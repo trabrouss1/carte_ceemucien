@@ -20,30 +20,21 @@ class Entree
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'entrees')]
-    private ?Annee $annee = null;
-
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
     #[ORM\Column]
     private ?float $montant = null;
 
+    #[ORM\ManyToOne(inversedBy: 'entrees')]
+    private ?Seminaire $seminaire = null;
+
+    #[ORM\ManyToOne(inversedBy: 'entrees')]
+    private ?Seminariste $seminariste = null;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getAnnee(): ?Annee
-    {
-        return $this->annee;
-    }
-
-    public function setAnnee(?Annee $annee): static
-    {
-        $this->annee = $annee;
-
-        return $this;
     }
 
     public function getDate(): ?\DateTimeInterface
@@ -66,6 +57,30 @@ class Entree
     public function setMontant(float $montant): static
     {
         $this->montant = $montant;
+
+        return $this;
+    }
+
+    public function getSeminaire(): ?Seminaire
+    {
+        return $this->seminaire;
+    }
+
+    public function setSeminaire(?Seminaire $seminaire): static
+    {
+        $this->seminaire = $seminaire;
+
+        return $this;
+    }
+
+    public function getSeminariste(): ?Seminariste
+    {
+        return $this->seminariste;
+    }
+
+    public function setSeminariste(?Seminariste $seminariste): static
+    {
+        $this->seminariste = $seminariste;
 
         return $this;
     }

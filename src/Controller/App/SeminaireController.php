@@ -2,7 +2,10 @@
 
 namespace App\Controller\App;
 
+use App\Entity\Annee;
+use App\Entity\Caisse;
 use App\Entity\Coordination;
+use App\Entity\Entree;
 use App\Entity\Seminaire;
 use App\Entity\Seminariste;
 use Doctrine\ORM\EntityManagerInterface;
@@ -55,6 +58,7 @@ class SeminaireController extends AbstractController
             $pernConfiance = $data['pernConfiance'];
             $contactPernConfiance = $data['contactPernConfiance'];
             $montantPayer = $data['montantPayer'];
+            $dateIncription = new \DateTime($data['dateIncription']);
 
             $errors = "";
             if ($nom == "" || $nom == null) {
@@ -105,9 +109,9 @@ class SeminaireController extends AbstractController
             $seminariste->setNom($nom)
                         ->setPnom($pnom)
                         ->setMatricule($matricule)
-                        ->setPernConfiance($pernConfiance)
-                        ->setMontant()
-                        ->setContactPernConfiance($contactPernConfiance)
+                        ->setPersonneConfiance($pernConfiance)
+                        ->setMontant($montant)
+                        ->setContactPersonneConfiance($contactPernConfiance)
                         ->setSexe($genre)
                         ->setContact($contact)
                         ->setCoordination($coordination)
@@ -129,15 +133,36 @@ class SeminaireController extends AbstractController
                         ->setCreatedBy($this->getUser());
             $this->manager->persist($seminariste);
 
+            $entree = new Entree();
+            $entree->setSeminaire($typeSeminaire)
+                    ->setDate($dateIncription)
+                    ->setSeminariste($seminariste)
+                    ->setMontant($montant)
+                   ->setCreatedBy($this->getUser());
+            $this->manager->persist($entree);
+
+            $caisseExiste = $this->manager->getRepository(Caisse::class)->findBySeminaire($typeSeminaire);
+            if ($caisseExiste) {
+                $caisseExiste->increment($montant);
+                $this->manager->persist($caisse);
+            } else {
+                $caisse = new Caisse();
+                $caisse->setSeminaire($typeSeminaire)
+                        ->setMontant($montant)
+                        ->setCreatedBy($this->getUser());
+                $this->manager->persist($caisse);
+            }
+
             try {
                 $this->manager->flush();
-                $this->addFlash("success", "Booooooooonnnnnnn");
+                $this->addFlash("success", "Le/La seminariste " . $seminariste->nomComplte() . " a bien été inscrit(e) et à pour matricule". $seminariste->getMatricule());
+                return $this->redirectToRoute($request->attributes->get('_route'));
             } catch(\Exception $e) {
                 $this->addFlash('danger', $e->getMessage());
             }
         }
-        $coordinations = $this->manager->getRepository(Coordination::class)->findAll();
-        $seminaires = $this->manager->getRepository(Seminaire::class)->findByActive(true);
+        $coordinations  = $this->manager->getRepository(Coordination::class)->findAll();
+        $seminaires     = $this->manager->getRepository(Seminaire::class)->findByActive(true);
         return $this->render('app/seminaire/inscription.html.twig', compact('coordinations','seminaires'));
     }
 
@@ -150,7 +175,7 @@ class SeminaireController extends AbstractController
     #[Route('/liste-seminariste', name: 'liste_seminariste')]
     public function liste_seminariste()
     {
-        $seminaristes = $this->manager->getRepository(Seminariste::class)->findAll();
+        $seminaristes = $this->manager->getRepository(Seminariste::class)->allSeminaristes($this->currentAnneeId);  // $this->requestStack->getCurrentRequest()->query->getInt('page', 1)
         return $this->render('app/seminaire/liste_seminariste.html.twig', compact('seminaristes'));
     }
 }

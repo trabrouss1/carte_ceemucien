@@ -2,6 +2,7 @@
 
 namespace App\Controller\App;
 
+use App\Entity\Caisse;
 use App\Entity\Classe;
 use App\Entity\EcheanceVersement;
 use App\Entity\EventCalendar;
@@ -32,7 +33,7 @@ class AdminController extends AbstractController
     public function admin_index()
     {
         $nombreSeminariste = $this->manager->getRepository(Seminariste::class)->count(['deletedAt' => null]);
-//        dd($nombreSeminariste);
-        return $this->render('app/base.html.twig', compact('nombreSeminariste'));
+        $montantCaisse = $this->manager->getRepository(Caisse::class)->montantCaisse($this->currentAnneeId);
+        return $this->render('app/base.html.twig', compact('nombreSeminariste','montantCaisse'));
     }
 }

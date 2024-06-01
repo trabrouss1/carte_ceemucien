@@ -18,28 +18,27 @@ class Caisse
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?Annee $annee = null;
-
     #[ORM\Column]
     private ?float $montant = null;
+
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Seminaire $seminaire = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getAnnee(): ?Annee
+    public function decrement(float $montant)
     {
-        return $this->annee;
+        $this->montant -= $montant;
+        return $montant;
     }
 
-    public function setAnnee(?Annee $annee): static
+    public function increment(float $montant)
     {
-        $this->annee = $annee;
-
-        return $this;
+        $this->montant += $montant;
+        return $montant;
     }
 
     public function getMontant(): ?float
@@ -50,6 +49,18 @@ class Caisse
     public function setMontant(float $montant): static
     {
         $this->montant = $montant;
+
+        return $this;
+    }
+
+    public function getSeminaire(): ?Seminaire
+    {
+        return $this->seminaire;
+    }
+
+    public function setSeminaire(?Seminaire $seminaire): static
+    {
+        $this->seminaire = $seminaire;
 
         return $this;
     }
