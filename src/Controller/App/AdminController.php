@@ -10,6 +10,7 @@ use App\Entity\Inscription;
 use App\Entity\Interned;
 use App\Entity\Matiere;
 use App\Entity\PaymentTransport;
+use App\Entity\Seminariste;
 use App\Entity\User;
 use App\Service\CheckSubscriptionService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -30,6 +31,8 @@ class AdminController extends AbstractController
     #[Route('/admin-home', name: 'admin_index')]
     public function admin_index()
     {
-        return $this->render('app/base.html.twig');
+        $nombreSeminariste = $this->manager->getRepository(Seminariste::class)->count(['deletedAt' => null]);
+//        dd($nombreSeminariste);
+        return $this->render('app/base.html.twig', compact('nombreSeminariste'));
     }
 }

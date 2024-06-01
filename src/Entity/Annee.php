@@ -32,9 +32,23 @@ class Annee
     #[ORM\OneToMany(targetEntity: Batiment::class, mappedBy: 'annee')]
     private Collection $batiements;
 
+    /**
+     * @var Collection<int, Entree>
+     */
+    #[ORM\OneToMany(targetEntity: Entree::class, mappedBy: 'annee')]
+    private Collection $entrees;
+
+    /**
+     * @var Collection<int, Sortie>
+     */
+    #[ORM\OneToMany(targetEntity: Sortie::class, mappedBy: 'annee')]
+    private Collection $sorties;
+
     public function __construct()
     {
         $this->batiements = new ArrayCollection();
+        $this->entrees = new ArrayCollection();
+        $this->sorties = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -90,6 +104,66 @@ class Annee
             // set the owning side to null (unless already changed)
             if ($batiement->getAnnee() === $this) {
                 $batiement->setAnnee(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Entree>
+     */
+    public function getEntrees(): Collection
+    {
+        return $this->entrees;
+    }
+
+    public function addEntree(Entree $entree): static
+    {
+        if (!$this->entrees->contains($entree)) {
+            $this->entrees->add($entree);
+            $entree->setAnnee($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEntree(Entree $entree): static
+    {
+        if ($this->entrees->removeElement($entree)) {
+            // set the owning side to null (unless already changed)
+            if ($entree->getAnnee() === $this) {
+                $entree->setAnnee(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Sortie>
+     */
+    public function getSorties(): Collection
+    {
+        return $this->sorties;
+    }
+
+    public function addSorty(Sortie $sorty): static
+    {
+        if (!$this->sorties->contains($sorty)) {
+            $this->sorties->add($sorty);
+            $sorty->setAnnee($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSorty(Sortie $sorty): static
+    {
+        if ($this->sorties->removeElement($sorty)) {
+            // set the owning side to null (unless already changed)
+            if ($sorty->getAnnee() === $this) {
+                $sorty->setAnnee(null);
             }
         }
 
